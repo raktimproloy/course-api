@@ -1,0 +1,221 @@
+{
+  "info": {
+    "name": "Course Management API",
+    "description": "Complete API collection for Course Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Create Course",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Complete Web Development Bootcamp\",\n  \"batchName\": \"Batch 2024\",\n  \"description\": \"Learn web development from scratch to advanced concepts including HTML, CSS, JavaScript, React, Node.js, and MongoDB. This comprehensive course covers everything you need to become a full-stack developer.\",\n  \"slug\": \"web-development-bootcamp-2024\",\n  \"imageUrl\": \"https://example.com/images/web-dev-bootcamp.jpg\",\n  \"courseType\": \"Programming\",\n  \"upcomingCourse\": 0,\n  \"statistics\": {\n    \"enrolledStudents\": 0,\n    \"moduleCount\": 0,\n    \"projectCount\": 0,\n    \"assignmentCount\": 0,\n    \"price\": 99.99,\n    \"originalPrice\": 199.99\n  },\n  \"instructors\": [\n    {\n      \"name\": \"John Doe\",\n      \"role\": \"Senior Web Developer\",\n      \"bio\": \"10+ years of experience in web development, worked with major tech companies\",\n      \"imageUrl\": \"https://example.com/images/john-doe.jpg\"\n    },\n    {\n      \"name\": \"Jane Smith\",\n      \"role\": \"Frontend Specialist\",\n      \"bio\": \"Expert in modern frontend frameworks and responsive design\",\n      \"imageUrl\": \"https://example.com/images/jane-smith.jpg\"\n    }\n  ],\n  \"courseFeatures\": [\n    \"Lifetime access to all course materials\",\n    \"Certificate of completion\",\n    \"24/7 support from instructors\",\n    \"Real-world projects\",\n    \"Community access\"\n  ],\n  \"courseModules\": [\n    {\n      \"title\": \"HTML & CSS Fundamentals\",\n      \"lessons\": [\n        \"Introduction to HTML\",\n        \"HTML Structure and Semantics\",\n        \"CSS Basics and Selectors\",\n        \"CSS Layout and Flexbox\",\n        \"Responsive Design Principles\"\n      ]\n    },\n    {\n      \"title\": \"JavaScript Programming\",\n      \"lessons\": [\n        \"JavaScript Basics\",\n        \"Functions and Scope\",\n        \"Arrays and Objects\",\n        \"DOM Manipulation\",\n        \"Async Programming\"\n      ]\n    },\n    {\n      \"title\": \"React Framework\",\n      \"lessons\": [\n        \"React Components\",\n        \"State and Props\",\n        \"Hooks and Lifecycle\",\n        \"Routing with React Router\",\n        \"State Management\"\n      ]\n    },\n    {\n      \"title\": \"Backend Development\",\n      \"lessons\": [\n        \"Node.js Basics\",\n        \"Express.js Framework\",\n        \"MongoDB Database\",\n        \"RESTful APIs\",\n        \"Authentication & Security\"\n      ]\n    }\n  ],\n  \"assignments\": [\n    \"Build a responsive portfolio website\",\n    \"Create a JavaScript calculator\",\n    \"Develop a React todo application\",\n    \"Build a REST API with Node.js\"\n  ],\n  \"projects\": [\n    \"E-commerce website with full functionality\",\n    \"Social media application\",\n    \"Real-time chat application\",\n    \"Full-stack blog platform\"\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/courses",
+          "host": ["{{base_url}}"],
+          "path": ["api", "courses"]
+        }
+      }
+    },
+    {
+      "name": "Get All Courses",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/courses?page=1&limit=10",
+          "host": ["{{base_url}}"],
+          "path": ["api", "courses"],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get All Courses with Filters",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/courses?upcomingCourse=0&courseType=Programming&search=web",
+          "host": ["{{base_url}}"],
+          "path": ["api", "courses"],
+          "query": [
+            {
+              "key": "upcomingCourse",
+              "value": "0"
+            },
+            {
+              "key": "courseType",
+              "value": "Programming"
+            },
+            {
+              "key": "search",
+              "value": "web"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Course by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/courses/{{course_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["api", "courses", "{{course_id}}"]
+        }
+      }
+    },
+    {
+      "name": "Get Course by Slug",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/courses/slug/web-development-bootcamp-2024",
+          "host": ["{{base_url}}"],
+          "path": ["api", "courses", "slug", "web-development-bootcamp-2024"]
+        }
+      }
+    },
+    {
+      "name": "Update Course",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Updated Web Development Bootcamp 2024\",\n  \"statistics\": {\n    \"price\": 89.99,\n    \"enrolledStudents\": 25\n  },\n  \"courseFeatures\": [\n    \"Lifetime access to all course materials\",\n    \"Certificate of completion\",\n    \"24/7 support from instructors\",\n    \"Real-world projects\",\n    \"Community access\",\n    \"Job placement assistance\"\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/courses/{{course_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["api", "courses", "{{course_id}}"]
+        }
+      }
+    },
+    {
+      "name": "Delete Course",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/courses/{{course_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["api", "courses", "{{course_id}}"]
+        }
+      }
+    },
+    {
+      "name": "Get Course Statistics",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/courses/stats/overview",
+          "host": ["{{base_url}}"],
+          "path": ["api", "courses", "stats", "overview"]
+        }
+      }
+    },
+    {
+      "name": "Create Design Course",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"UI/UX Design Masterclass\",\n  \"batchName\": \"Design Batch 2024\",\n  \"description\": \"Master the art of user interface and user experience design. Learn design principles, tools, and techniques used by professional designers.\",\n  \"slug\": \"ui-ux-design-masterclass-2024\",\n  \"imageUrl\": \"https://example.com/images/ui-ux-design.jpg\",\n  \"courseType\": \"Design\",\n  \"upcomingCourse\": 1,\n  \"statistics\": {\n    \"enrolledStudents\": 0,\n    \"moduleCount\": 0,\n    \"projectCount\": 0,\n    \"assignmentCount\": 0,\n    \"price\": 149.99,\n    \"originalPrice\": 299.99\n  },\n  \"instructors\": [\n    {\n      \"name\": \"Sarah Johnson\",\n      \"role\": \"Senior UI/UX Designer\",\n      \"bio\": \"15+ years in digital design, worked with Fortune 500 companies\",\n      \"imageUrl\": \"https://example.com/images/sarah-johnson.jpg\"\n    }\n  ],\n  \"courseFeatures\": [\n    \"Access to design resources\",\n    \"Portfolio building guidance\",\n    \"Industry insights and trends\",\n    \"Design critique sessions\"\n  ],\n  \"courseModules\": [\n    {\n      \"title\": \"Design Fundamentals\",\n      \"lessons\": [\n        \"Principles of Design\",\n        \"Color Theory\",\n        \"Typography Basics\",\n        \"Layout and Composition\"\n      ]\n    },\n    {\n      \"title\": \"User Research\",\n      \"lessons\": [\n        \"User Interviews\",\n        \"Surveys and Analytics\",\n        \"Persona Creation\",\n        \"User Journey Mapping\"\n      ]\n    },\n    {\n      \"title\": \"Design Tools\",\n      \"lessons\": [\n        \"Figma Mastery\",\n        \"Adobe XD\",\n        \"Sketch Basics\",\n        \"Prototyping Tools\"\n      ]\n    }\n  ],\n  \"assignments\": [\n    \"Design a mobile app interface\",\n    \"Create a website wireframe\",\n    \"Develop a design system\"\n  ],\n  \"projects\": [\n    \"Complete mobile app design\",\n    \"E-commerce website redesign\",\n    \"Brand identity package\"\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/courses",
+          "host": ["{{base_url}}"],
+          "path": ["api", "courses"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "admin_token",
+      "value": "your_jwt_token_here",
+      "type": "string"
+    },
+    {
+      "key": "course_id",
+      "value": "course_id_from_create_response",
+      "type": "string"
+    }
+  ]
+}
