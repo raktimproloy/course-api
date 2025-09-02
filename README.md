@@ -93,7 +93,7 @@ npm start
 All protected routes require a JWT token in the Authorization header:
 
 ```http
-Authorization: Bearer <your-jwt-token>
+Authorization: Bearer admin
 ```
 
 ### 📖 Course Endpoints
@@ -162,15 +162,12 @@ Authorization: Bearer <your-jwt-token>
 
 ```bash
 # Get paginated courses with filters
-GET /api/courses?page=1&limit=10&upcomingCourse=0&courseType=Programming&search=web
+GET /api/courses?page=1&limit=10
 ```
 
 **Query Parameters:**
 - `page` - Page number (default: 1)
 - `limit` - Items per page (default: 10)
-- `upcomingCourse` - Filter by upcoming status (0 or 1)
-- `courseType` - Filter by course type
-- `search` - Search in title and description
 
 ---
 
@@ -199,9 +196,7 @@ course-management-api/
 
 - 🛡️ **JWT Authentication** for secure access
 - ✅ **Input Validation** to prevent malicious data
-- ⚡ **Rate Limiting** to prevent API abuse
 - 🔐 **Security Headers** with Helmet.js
-- 🌐 **CORS Configuration** for cross-origin requests
 - 💉 **MongoDB Injection Protection** via Mongoose
 
 ---
@@ -243,3 +238,4 @@ course-management-api/
 Made with ❤️ by [Your Name](https://github.com/your-username)
 
 </div>
+
