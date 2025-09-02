@@ -209,7 +209,7 @@
     },
     {
       "key": "admin_token",
-      "value": "your_jwt_token_here",
+      "value": "admin",
       "type": "string"
     },
     {

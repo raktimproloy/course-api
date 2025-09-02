@@ -269,10 +269,24 @@ const updateCourse = async (req, res) => {
     // Add updated timestamp
     updateData.updatedAt = new Date();
 
+    // Handle nested updates properly using $set operator
+    const updateQuery = {};
+    for (const [key, value] of Object.entries(updateData)) {
+      if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        // Handle nested objects like statistics
+        for (const [nestedKey, nestedValue] of Object.entries(value)) {
+          updateQuery[`${key}.${nestedKey}`] = nestedValue;
+        }
+      } else {
+        // Handle regular fields
+        updateQuery[key] = value;
+      }
+    }
+
     // Update course
     const updatedCourse = await Course.findByIdAndUpdate(
       id,
-      updateData,
+      { $set: updateQuery },
       { 
         new: true, 
         runValidators: true,
